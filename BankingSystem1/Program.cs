@@ -33,6 +33,9 @@ namespace BankingSystem1
             string loop = "Y";
             do
             {
+
+                Console.WriteLine( );
+                Console.Write("Enter a Menu Option: ");
                 int options = int.Parse(Console.ReadLine());
                 Spacer();
 

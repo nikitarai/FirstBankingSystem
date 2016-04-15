@@ -72,7 +72,7 @@ namespace BankingSystem1
         public void Withdraw(decimal amount)
         {
             Balance = Balance - amount;
-            this.Transactions.Add(DateTime.Now + "\t-\t" + amount  + "\t" + this.Balance);
+            this.Transactions.Add(DateTime.Now+ "\t  -\t" + amount  + "\t" + this.Balance);
             writeHistory();
             Console.Write("New Current Balance: $");
             Console.WriteLine(this.Balance);
@@ -81,7 +81,7 @@ namespace BankingSystem1
         public void Deposit(decimal amount)
         { 
             Balance = Balance + amount;
-           this.Transactions.Add(DateTime.Now + "\t+\t" + amount + "\t" + this.Balance);
+           this.Transactions.Add(DateTime.Now + "\t  +\t" + amount + "\t" + this.Balance);
             writeHistory();
             Console.Write("New Current Balance: $");
             Console.WriteLine(this.Balance);
@@ -96,9 +96,10 @@ namespace BankingSystem1
             {
                 write.WriteLine("Client Name: " + this.Name);
                 write.WriteLine("Account Number: " + this.AcctNum);
+                write.WriteLine("Current Account Balance: {0}",this.Balance);
                 write.WriteLine("\r\n");
-                write.WriteLine("Date\t\t\t(+/-)\tAmount\tNew Balance");
-
+                write.WriteLine("Date\t  Time\t\t(+/-)\tAmount\tNew Balance");
+                write.WriteLine("\r\n");
                 foreach (string lineHistory in transactions)
                 {
                     write.WriteLine(lineHistory);

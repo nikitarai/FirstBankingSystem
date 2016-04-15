@@ -13,14 +13,33 @@ namespace BankingSystem1
         private Accounts account;
 
         //properties
-        public virtual string Name { get; set; }
-        public virtual Accounts Accounts { get; set; }
+        public virtual string Name
+        {
+            get
+            {
+                return this.name;
+            }
+            set
+            {
+                this.name = value;
+            }
+        }
+        public virtual Accounts Accounts
+        {
+            get
+            {
+                return this.account;
+            }
+            set
+            {
+                this.account = value;
+            }
+        }
 
         //Balance Method
         public void Balance()
         {
-            
-            
+                  
             Console.WriteLine("Account Balance : ${0}", this.Accounts.Balance);
         }
 
@@ -31,6 +50,7 @@ namespace BankingSystem1
             Console.WriteLine();
             Console.WriteLine("Client Name: {0}", this.Name);
             Console.WriteLine("Account Number: {0}", this.Accounts.AcctNum);
+            Console.WriteLine("Account Balance: {0}", this.Accounts.Balance);
             
            // Console.WriteLine("");
         }
