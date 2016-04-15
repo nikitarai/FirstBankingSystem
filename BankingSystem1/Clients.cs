@@ -39,13 +39,14 @@ namespace BankingSystem1
         //Balance Method
         public void Balance()
         {
-                  
+            //printing balance to console
             Console.WriteLine("Account Balance : ${0}", this.Accounts.Balance);
         }
 
         //Information Method
         public void Info()
         {
+            //printing account information to the console
             Console.WriteLine("Account Information");
             Console.WriteLine();
             Console.WriteLine("Client Name: {0}", this.Name);
@@ -55,7 +56,7 @@ namespace BankingSystem1
            // Console.WriteLine("");
         }
 
-        //Constructor
+        //Constructor with one parameter
         public Clients(string name)
         {
             this.Name = name;

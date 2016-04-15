@@ -11,16 +11,22 @@ namespace BankingSystem1
     {
         static void Main(string[] args)
         {
+            //instantiate new object from client class
+
             Clients user = new Clients("John Smith");
 
+            //instantiate new object from accounts class
             user.Accounts = new Accounts(user.Name);           
 
+
+            //calling menu method, passing client and account through
             Menu(user.Accounts, user);
             
         }
 
         static void Menu(Accounts test, Clients user)
         {
+            //display bank menu options
             Console.WriteLine("The First Bank");
             Console.WriteLine("Account Menu");
             Spacer();
@@ -30,17 +36,19 @@ namespace BankingSystem1
             Console.WriteLine("4 | Withdraw Funds");
             Console.WriteLine("5 | Exit");
 
+
+            //do while loop to give user ability to keep accessing above menu
             string loop = "Y";
             do
             {
-
+                // get user input and use input in switch case
                 Console.WriteLine( );
                 Console.Write("Enter a Menu Option: ");
                 int options = int.Parse(Console.ReadLine());
                 Spacer();
 
 
-
+                
                 switch (options)
                 {
                     case 1:
