@@ -18,7 +18,7 @@ namespace BankingSystem1
         private string name;
         private decimal balance;
         private int acctNum;
-        private List<string> transactions = new List<string>();
+        private List<Array> transactions = new List<Array>();
 
 
         //properties
@@ -59,11 +59,15 @@ namespace BankingSystem1
                 this.name = value;
             }
         }
-        public virtual List<string> Transactions
+        public virtual List<Array> Transactions
         {
             get
             {
                 return this.transactions;
+            }
+            set
+            {
+                this.transactions = value;
             }
         }
 
@@ -72,7 +76,7 @@ namespace BankingSystem1
         public void Withdraw(decimal amount)
         {
             Balance = Balance - amount;
-            this.Transactions.Add(DateTime.Now+ "\t  -\t" + amount  + "\t" + this.Balance);
+            this.Transactions.Add(new Object[] { DateTime.Now,"  -",amount,this.Balance});
             writeHistory();
             Console.Write("New Current Balance: $");
             Console.WriteLine(this.Balance);
@@ -81,7 +85,7 @@ namespace BankingSystem1
         public void Deposit(decimal amount)
         { 
             Balance = Balance + amount;
-           this.Transactions.Add(DateTime.Now + "\t  +\t" + amount + "\t" + this.Balance);
+           this.Transactions.Add(new Object[] { DateTime.Now, "  +", amount, this.Balance });
             writeHistory();
             Console.Write("New Current Balance: $");
             Console.WriteLine(this.Balance);
@@ -98,11 +102,12 @@ namespace BankingSystem1
                 write.WriteLine("Account Number: " + this.AcctNum);
                 write.WriteLine("Current Account Balance: {0}",this.Balance);
                 write.WriteLine("\r\n");
-                write.WriteLine("Date\t  Time\t\t(+/-)\tAmount\tNew Balance");
+                write.WriteLine("Date\t  Time\t\t(+/-)\tAmount\t\tNew Balance");
                 write.WriteLine("\r\n");
-                foreach (string lineHistory in transactions)
+
+                foreach (Array lineHistory in transactions)
                 {
-                    write.WriteLine(lineHistory);
+                    write.WriteLine("{0}\t{1}\t{2}\t\t{3}",lineHistory.GetValue(0), lineHistory.GetValue(1), lineHistory.GetValue(2), lineHistory.GetValue(3));
                 }
             }
         }
