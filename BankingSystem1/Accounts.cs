@@ -22,17 +22,57 @@ namespace BankingSystem1
 
 
         //properties
-        public virtual decimal Balance { get; set; }
-        public virtual int AcctNum { get; set; }
-        public virtual string Name { get; set; }
-        public virtual List<string> Transactions { get; }
+        public virtual decimal Balance
+        {
+            get
+            {
+                return this.balance;
+            }
+            set
+            {
+                this.balance = value;
+            }
+        }
+
+
+        public virtual int AcctNum
+        {
+            get
+            {
+                return this.acctNum;
+            }
+            set
+            {
+                this.acctNum = value;
+            }
+        }
+
+        public virtual string Name
+        {
+            get
+            {
+                return this.name;
+            }
+
+            set
+            {
+                this.name = value;
+            }
+        }
+        public virtual List<string> Transactions
+        {
+            get
+            {
+                return this.transactions;
+            }
+        }
 
         //methods
 
         public void Withdraw(decimal amount)
         {
             Balance = Balance - amount;
-            this.transactions.Add(DateTime.Now + "\t-\t" + amount  + "\t" + this.Balance);
+            this.Transactions.Add(DateTime.Now + "\t-\t" + amount  + "\t" + this.Balance);
             writeHistory();
             Console.Write("New Current Balance: $");
             Console.WriteLine(this.Balance);
@@ -41,7 +81,7 @@ namespace BankingSystem1
         public void Deposit(decimal amount)
         { 
             Balance = Balance + amount;
-           this.transactions.Add(DateTime.Now + "\t+\t" + amount + "\t" + this.Balance);
+           this.Transactions.Add(DateTime.Now + "\t+\t" + amount + "\t" + this.Balance);
             writeHistory();
             Console.Write("New Current Balance: $");
             Console.WriteLine(this.Balance);
